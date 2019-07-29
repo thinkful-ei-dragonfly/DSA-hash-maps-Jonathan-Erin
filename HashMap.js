@@ -16,7 +16,7 @@ class HashMap {
   }
   get(key){
     const index = this._findSlot(key)
-    if(this._hasTable[index] === undefined){
+    if(this._hashTable[index] === undefined){
       throw new Error('Key error')
     }
     return this._hashTable[index].value
@@ -24,7 +24,8 @@ class HashMap {
 
   set(key, value) {
     const loadRatio = (this.length + this._deleted + 1) / this._capacity
-    if (loadRation > HashMap.MAX_LOAD_RATIO) {
+    console.log(loadRatio, HashMap.MAX_LOAD_RATIO)
+    if (loadRatio > HashMap.MAX_LOAD_RATIO) {
       this._resize(this._capacity * HashMap.SIZE_RATIO)
     }
 
@@ -56,13 +57,14 @@ class HashMap {
     const start = hash % this._capacity 
 
     for (let i = start; i < start + this._capacity; i++) {
-      const index = 1 % this._capacity
+      const index = i % this._capacity
       const slot = this._hashTable[index]
       if (slot === undefined || (slot.key === key && !slot.DELETED)) {
         return index
       }
     }
   }
+
   _resize(size){
     const oldSlots = this._hashTable
     this._capacity = size
@@ -77,5 +79,10 @@ class HashMap {
     }
   }
 }
+
+HashMap.MAX_LOAD_RATIO = .5;
+HashMap.SIZE_RATIO = 3;
+
+module.exports = HashMap;
 
 
