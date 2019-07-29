@@ -1,0 +1,5 @@
+2. Because the strings are the same, when we treat those strings as a key and set the value to 10 and then set it to 20, it will overwrite 10 with 20. Then it switches it back.
+
+Hash Map with open addressing = [22, '1', '2', '3', 4 , 15 , 28, 17, 88 , 31, 10, 59 ]
+
+['0', 28 -> 19 -> 10, 20, 12, '4', 5, 15 -> 33, '7', 17]
