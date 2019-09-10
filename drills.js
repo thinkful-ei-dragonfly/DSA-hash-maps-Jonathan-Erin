@@ -102,23 +102,52 @@ function anagram(array){
   return Array.from(obj);
 }
 
+  function mode(string){
+    let arr = string.split(' ')
+    let currMax = 0
+    let HM = new Map()
+    for(let i=0; i<arr.length;i++){
+      let current = arr[i]
+      if(HM.has(current)){
+        console.log('infirst')
+        if(current> currMax){
+          currMax = current
+        }
+        let old = HM.get(current)
+        console.log(old)
+        HM.set(current, old+1)
+      } else {
+        // console.log('insecond')
+        if(current> currMax){
+          currMax = current
+        }
+
+        HM.set(current, 1)
+      }
+    }
+
+    let freq = HM.get(currMax)
+
+    return `Mode = ${currMax}, Frequency of mode = ${freq}`
+  }
+
+  // console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`))
+
 
   function main() {
     const lor = new HashMap();
-    // // lor.MAX_LOAD_RATIO = 0.5;
-    // // lor.SIZE_RATIO = 3;
 
-    // lor.set("Hobbit", "Bilbo");
-    // lor.set("Hobbit", "Frodo");
-    // lor.set("Wizard", "Gandolf");
-    // lor.set("Human", "Aragon");
-    // lor.set("Elf", "Legolas");
-    // lor.set("Maiar", "The Necromancer");
-    // lor.set("Maiar", "Sauron");
-    // lor.set("RingBearer", "Gollum");
-    // lor.set("LadyOfLight", "Galadriel");
-    // lor.set("HalfElven", "Arwen");
-    // lor.set("Ent", "Treebeard");
+    lor.set("Hobbit", "Bilbo");
+    lor.set("Hobbit", "Frodo");
+    lor.set("Wizard", "Gandolf");
+    lor.set("Human", "Aragon");
+    lor.set("Elf", "Legolas");
+    lor.set("Maiar", "The Necromancer");
+    lor.set("Maiar", "Sauron");
+    lor.set("RingBearer", "Gollum");
+    lor.set("LadyOfLight", "Galadriel");
+    lor.set("HalfElven", "Arwen");
+    lor.set("Ent", "Treebeard");
 
     // console.log(lor);
     // console.log(removeDup('Hello'))
